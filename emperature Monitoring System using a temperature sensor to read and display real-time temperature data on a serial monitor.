@@ -1,0 +1,18 @@
+#define TEMP_SENSOR A0   // LM35 connected to analog pin A0
+
+float temperatureC;
+
+void setup() {
+    Serial.begin(9600);  // Start serial communication at 9600 bps
+}
+
+void loop() {
+    int sensorValue = analogRead(TEMP_SENSOR);  // Read analog value
+    temperatureC = (sensorValue * 5.0 * 100.0) / 1024.0; // Convert to °C
+
+    Serial.print("Temperature: ");
+    Serial.print(temperatureC);
+    Serial.println(" °C");
+
+    delay(1000); // Wait 1 second
+}
